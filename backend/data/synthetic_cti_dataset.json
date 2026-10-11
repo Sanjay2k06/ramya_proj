@@ -1,0 +1,243 @@
+{
+  "metadata": {
+    "title": "TEMPORAL CTI FORENSICS — Synthetic Benchmark Threat Intelligence Dataset",
+    "version": "1.0.0",
+    "generated_for": "Forensic validation of temporal correlation, conflict detection, and explainable evidence chaining",
+    "disclaimer": "ALL ENTITIES, IDENTIFIERS, VULNERABILITIES, AND THREAT ACTORS ARE SYNTHETIC RESEARCH ARTIFACTS. Designed for academic and security operations research.",
+    "total_records": 12,
+    "scenario_clusters": [
+      "SCENARIO-A: Disputed Zero-Day Attribution & Temporal Incompatibility (CVE-2026-SYNTH-8901)",
+      "SCENARIO-B: Ransomware Double-Claim & Contradictory Exfiltration Timelines (GhostWeaver vs DarkHydra)",
+      "SCENARIO-C: Critical Infrastructure Firmware Advisory & Disputed Version Scope (CVE-2026-SYNTH-4412)"
+    ]
+  },
+  "records": [
+    {
+      "id": "CTI-SYNTH-001",
+      "source_name": "CyberVanguard Threat Intel Blog",
+      "source_url": "https://threatintel.example.org/blog/apt-synth99-zeroday",
+      "source_type": "independent_blog",
+      "source_timestamp": "2026-03-01T14:30:00Z",
+      "collection_timestamp": "2026-03-01T15:00:00Z",
+      "threat_category": "zero_day_exploitation",
+      "confidence_score": 0.65,
+      "original_content": "On 2026-02-15, state-sponsored adversary APT-SYNTH-99 weaponized an unpatched remote code execution vulnerability CVE-2026-SYNTH-8901 affecting OmniGateway v4.2. Exploitation traffic originated from IP 198.51.100.45 utilizing custom malware DarkHydra (SHA256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855) targeting defense industrial base cloud infrastructure.",
+      "entities": [
+        {"type": "actor", "value": "APT-SYNTH-99"},
+        {"type": "cve", "value": "CVE-2026-SYNTH-8901"},
+        {"type": "malware", "value": "DarkHydra"},
+        {"type": "ip", "value": "198.51.100.45"},
+        {"type": "hash", "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+        {"type": "asset", "value": "OmniGateway v4.2"}
+      ],
+      "claims": [
+        {
+          "claim_text": "APT-SYNTH-99 exploited CVE-2026-SYNTH-8901 in OmniGateway v4.2 on 2026-02-15",
+          "subject": "APT-SYNTH-99",
+          "predicate": "EXPLOITS",
+          "object": "CVE-2026-SYNTH-8901",
+          "event_time": "2026-02-15T00:00:00Z"
+        },
+        {
+          "claim_text": "DarkHydra malware was dropped from 198.51.100.45 during OmniGateway exploitation",
+          "subject": "DarkHydra",
+          "predicate": "INDICATES",
+          "object": "198.51.100.45",
+          "event_time": "2026-02-15T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "CTI-SYNTH-002",
+      "source_name": "OmniSystems Official Security Advisory",
+      "source_url": "https://omnisystems.example.com/security/advisories/sa-2026-01",
+      "source_type": "vendor_advisory",
+      "source_timestamp": "2026-01-20T09:00:00Z",
+      "collection_timestamp": "2026-01-20T10:15:00Z",
+      "threat_category": "vulnerability_remediation",
+      "confidence_score": 0.95,
+      "original_content": "OmniSystems Security Bulletin SA-2026-01: Vulnerability CVE-2026-SYNTH-8901 is an input boundary validation issue in OmniGateway versions 4.0 through 4.1. This issue cannot cause remote code execution; it only leads to temporary denial of service. OmniGateway v4.2 was released on 2026-01-10 and is NOT vulnerable. No in-the-wild exploitation observed prior to patch release.",
+      "entities": [
+        {"type": "cve", "value": "CVE-2026-SYNTH-8901"},
+        {"type": "asset", "value": "OmniGateway v4.2"},
+        {"type": "asset", "value": "OmniGateway v4.1"}
+      ],
+      "claims": [
+        {
+          "claim_text": "CVE-2026-SYNTH-8901 only causes denial of service, not remote code execution",
+          "subject": "CVE-2026-SYNTH-8901",
+          "predicate": "CHARACTERIZED_AS",
+          "object": "Denial of Service",
+          "event_time": "2026-01-20T09:00:00Z"
+        },
+        {
+          "claim_text": "OmniGateway v4.2 is not vulnerable to CVE-2026-SYNTH-8901 and was patched on 2026-01-10",
+          "subject": "OmniGateway v4.2",
+          "predicate": "UNAFFECTED_BY",
+          "object": "CVE-2026-SYNTH-8901",
+          "event_time": "2026-01-10T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "CTI-SYNTH-003",
+      "source_name": "ApexCERT National Cyber Advisory",
+      "source_url": "https://apexcert.gov.example/advisories/al-2026-044",
+      "source_type": "cert_government",
+      "source_timestamp": "2026-03-03T18:00:00Z",
+      "collection_timestamp": "2026-03-03T18:30:00Z",
+      "threat_category": "threat_actor_campaign",
+      "confidence_score": 0.90,
+      "original_content": "ApexCERT has corroborated active intrusions targeting OmniGateway gateways. However, telemetry confirms the threat group is VoltPhantom (not APT-SYNTH-99). The campaign leverages backdoor ShadowStalker rather than DarkHydra. Command and control infrastructure is hosted at 198.51.100.45 and domain c2.synthetic-threat.internal.",
+      "entities": [
+        {"type": "actor", "value": "VoltPhantom"},
+        {"type": "actor", "value": "APT-SYNTH-99"},
+        {"type": "malware", "value": "ShadowStalker"},
+        {"type": "ip", "value": "198.51.100.45"},
+        {"type": "domain", "value": "c2.synthetic-threat.internal"},
+        {"type": "asset", "value": "OmniGateway"}
+      ],
+      "claims": [
+        {
+          "claim_text": "Intrusions through 198.51.100.45 are attributed to VoltPhantom, directly refuting APT-SYNTH-99",
+          "subject": "VoltPhantom",
+          "predicate": "ATTRIBUTED_TO",
+          "object": "198.51.100.45",
+          "event_time": "2026-03-01T00:00:00Z"
+        },
+        {
+          "claim_text": "VoltPhantom deployed ShadowStalker malware connecting to c2.synthetic-threat.internal",
+          "subject": "VoltPhantom",
+          "predicate": "DEPLOYS",
+          "object": "ShadowStalker",
+          "event_time": "2026-03-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "CTI-SYNTH-004",
+      "source_name": "Global Threat Dispatch",
+      "source_url": "https://globaldispatch.example.org/analysis/ghostweaver",
+      "source_type": "open_source_cti",
+      "source_timestamp": "2026-02-10T11:00:00Z",
+      "collection_timestamp": "2026-02-10T12:00:00Z",
+      "threat_category": "ransomware_campaign",
+      "confidence_score": 0.70,
+      "original_content": "GhostWeaver ransomware group claimed exfiltration of 500GB from SynthoCorp on 2026-02-08 via domain exfil.example-forensics.org. GhostWeaver published sample data hashes including e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.",
+      "entities": [
+        {"type": "actor", "value": "GhostWeaver"},
+        {"type": "domain", "value": "exfil.example-forensics.org"},
+        {"type": "hash", "value": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+        {"type": "asset", "value": "SynthoCorp"}
+      ],
+      "claims": [
+        {
+          "claim_text": "GhostWeaver exfiltrated 500GB from SynthoCorp on 2026-02-08 using exfil.example-forensics.org",
+          "subject": "GhostWeaver",
+          "predicate": "TARGETS",
+          "object": "SynthoCorp",
+          "event_time": "2026-02-08T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "CTI-SYNTH-005",
+      "source_name": "DarkMarket Incident Telemetry",
+      "source_url": "https://darktelemetry.example.net/intel/syndicate-clash",
+      "source_type": "underground_forum",
+      "source_timestamp": "2026-02-12T22:15:00Z",
+      "collection_timestamp": "2026-02-13T01:00:00Z",
+      "threat_category": "attribution_conflict",
+      "confidence_score": 0.40,
+      "original_content": "A rival syndicate DarkHydra posted proofs claiming GhostWeaver fabricated the SynthoCorp breach. DarkHydra claims they owned the network since 2025-12-01 and GhostWeaver only re-posted leaked legacy test data.",
+      "entities": [
+        {"type": "actor", "value": "DarkHydra"},
+        {"type": "actor", "value": "GhostWeaver"},
+        {"type": "asset", "value": "SynthoCorp"}
+      ],
+      "claims": [
+        {
+          "claim_text": "GhostWeaver fabricated SynthoCorp exfiltration; DarkHydra had exclusive foothold since 2025-12-01",
+          "subject": "GhostWeaver",
+          "predicate": "CONTRADICTS",
+          "object": "DarkHydra",
+          "event_time": "2025-12-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "CTI-SYNTH-006",
+      "source_name": "Industrial Cyber Defense Alliance (ICDA)",
+      "source_url": "https://icda.example.org/alerts/cve-2026-synth-4412",
+      "source_type": "industry_isac",
+      "source_timestamp": "2026-02-28T08:00:00Z",
+      "collection_timestamp": "2026-02-28T09:20:00Z",
+      "threat_category": "ot_ics_security",
+      "confidence_score": 0.85,
+      "original_content": "ICDA Alert on Industrial PLC Firmware CVE-2026-SYNTH-4412. Unauthenticated stack buffer overflow in Modbus gateway allows remote code execution. Public proof of concept published on GitHub on 2026-02-25. Exploitation observed in the wild targeting utility substations from IP 203.0.113.88.",
+      "entities": [
+        {"type": "cve", "value": "CVE-2026-SYNTH-4412"},
+        {"type": "ip", "value": "203.0.113.88"},
+        {"type": "asset", "value": "Modbus Gateway PLC"}
+      ],
+      "claims": [
+        {
+          "claim_text": "CVE-2026-SYNTH-4412 has public PoC since 2026-02-25 and active exploitation from 203.0.113.88",
+          "subject": "CVE-2026-SYNTH-4412",
+          "predicate": "EXPLOITS",
+          "object": "Modbus Gateway PLC",
+          "event_time": "2026-02-25T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "CTI-SYNTH-007",
+      "source_name": "Vendor ICS Firmware Team",
+      "source_url": "https://plc-vendor.example.com/sec/cve-2026-synth-4412",
+      "source_type": "vendor_advisory",
+      "source_timestamp": "2026-03-02T16:00:00Z",
+      "collection_timestamp": "2026-03-02T16:45:00Z",
+      "threat_category": "vulnerability_remediation",
+      "confidence_score": 0.95,
+      "original_content": "Vendor confirms CVE-2026-SYNTH-4412 is critical with CVSS 9.8. Firmware patch v3.9.1 released. Corroborates ICDA report that PoC exists and exploitation attempts have targeted exposed TCP port 502.",
+      "entities": [
+        {"type": "cve", "value": "CVE-2026-SYNTH-4412"},
+        {"type": "asset", "value": "Modbus Gateway PLC"}
+      ],
+      "claims": [
+        {
+          "claim_text": "Vendor confirms CVE-2026-SYNTH-4412 has CVSS 9.8 and corroborates in-the-wild exploitation",
+          "subject": "CVE-2026-SYNTH-4412",
+          "predicate": "CORROBORATES",
+          "object": "Modbus Gateway PLC",
+          "event_time": "2026-03-02T16:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "CTI-SYNTH-008",
+      "source_name": "SynthoCorp DFIR Post-Incident Report",
+      "source_url": "https://synthocorp.example.com/transparency/2026-incident-brief",
+      "source_type": "incident_response_report",
+      "source_timestamp": "2026-02-20T10:00:00Z",
+      "collection_timestamp": "2026-02-20T11:00:00Z",
+      "threat_category": "incident_forensics",
+      "confidence_score": 0.92,
+      "original_content": "Forensic audit by Mandiant/SynthoCorp confirmed no customer data exfiltration occurred in February 2026. The alleged 500GB dump consisted of dummy staging files generated by automated QA pipelines. Neither GhostWeaver nor DarkHydra gained privileged access to production Active Directory.",
+      "entities": [
+        {"type": "actor", "value": "GhostWeaver"},
+        {"type": "actor", "value": "DarkHydra"},
+        {"type": "asset", "value": "SynthoCorp"}
+      ],
+      "claims": [
+        {
+          "claim_text": "Forensic audit confirmed no real data exfiltration; claim of 500GB loss was fraudulent/fake CTI",
+          "subject": "SynthoCorp",
+          "predicate": "CONTRADICTS",
+          "object": "GhostWeaver",
+          "event_time": "2026-02-20T10:00:00Z"
+        }
+      ]
+    }
+  ]
+}
